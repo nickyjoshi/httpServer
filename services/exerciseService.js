@@ -1,12 +1,14 @@
 var express   = require( 'express' ),
     _           = require( 'underscore' ),
     Utils       = require( '../globals/util' ),
-    Exercise     = require( '../models/Exercise' );
+    Exercise     = require( '../models/Exercise' ),
+    jwt = require('express-jwt');
 
 var router = express.Router();
+var auth = jwt({secret: 'SECRET', userProperty:'payload'});
 
 router.route( '/' )
-  .get( function ( req, res ) {
+  .get( auth, function ( req, res ) {
     Utils.genericAll( req, res, Exercise);
   } );
   /*.post(function (req, res) {

@@ -38,9 +38,10 @@ var router = express.Router();
 
 // middleware to use for all requests
 app.use( function ( req, res, next ) {
-  res.header( "Access-Control-Allow-Origin", config.localhost.url );
+  //res.header( "Access-Control-Allow-Origin", config.localhost.url );
+  res.header("Access-Control-Allow-Origin", "*");
   res.header( "Access-Control-Allow-Methods", "POST,PUT,DELETE" );
-  res.header( "Access-Control-Allow-Headers", "X-Requested-With, Content-Type" );
+  res.header( "Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization" );
   res.header( 'Access-Control-Expose-Headers', 'Accept-Ranges, Content-Encoding, Content-Length, Content-Range, X-Content-Range' );
   res.header( "Content-Type", "application/json" );
   next();

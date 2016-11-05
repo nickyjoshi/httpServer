@@ -14,6 +14,10 @@ router.route( '/' )
 
 //Register method
   router.post('/register', function(req, res, next){
+
+console.log("username sent: " + req.body.username);
+console.log("body:" + JSON.stringify(req.body.username));
+
   if(!req.body.username || !req.body.password){
     return res.status(400).json({message: 'Please fill out all fields'});
   }
